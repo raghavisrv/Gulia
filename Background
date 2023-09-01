@@ -1,0 +1,10 @@
+/* Set the background color */
+body {
+    background-color: #e0e0e0;
+}
+
+/* Set the background image */
+/* body {
+    background-image: url('your-image.jpg');
+    background-size: cover; /* Adjust as needed */
+} */
