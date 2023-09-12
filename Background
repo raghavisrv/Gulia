@@ -1,5 +1,30 @@
-/* Set the background image */
-/* body {
-    background-image: url('your-image.jpg');
-    background-size: cover; /* Adjust as needed */
-} */
+import http.server
+import socketserver
+
+# Define the HTML content for your web page
+html_content = """
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Python Web Page</title>
+</head>
+<body>
+    <h1>Welcome to My Python Web Page</h1>
+    <p>This is a basic web page created in Python without using templates.</p>
+</body>
+</html>
+"""
+
+# Define a custom request handler
+class MyHandler(http.server.SimpleHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-type", "text/html")
+        self.end_headers()
+        self.wfile.write(html_content.encode())
+
+# Create a simple web server
+with socketserver.TCPServer(("", 8080), MyHandler) as httpd:
+    print("Serving at port 8080...")
+    httpd.serve_forever()
+"""
